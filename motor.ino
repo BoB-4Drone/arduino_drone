@@ -39,22 +39,24 @@ void loop(){
     char userInput = Serial.read();
     Serial.print(userInput);
 
-    char s = 'down';
-
-    if(userInput == s){
+    char t = 'takeoff';
+    char l = 'land';
+ 
+    if(userInput == l){
      int throttle = 0;
      ledcWrite(CHANNEL_A, throttle);
      ledcWrite(CHANNEL_B, throttle);
      ledcWrite(CHANNEL_C, throttle);
      ledcWrite(CHANNEL_D, throttle);
     }
-    
-    if(userInput >= '0'&& userInput <= '9'){
-     int throttle = (userInput - '0')*100;
+
+    if(userInput == t)
+    {
+     int throttle = 8*100;
      ledcWrite(CHANNEL_A, throttle);
-     ledcWrite(CHANNEL_B, throttle);
-     ledcWrite(CHANNEL_C, throttle);
-     ledcWrite(CHANNEL_D, throttle);
+     //ledcWrite(CHANNEL_B, throttle);
+     //ledcWrite(CHANNEL_C, throttle);
+     //ledcWrite(CHANNEL_D, throttle);
     }
   }
 }
