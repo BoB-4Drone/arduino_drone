@@ -41,9 +41,18 @@ void loop(){
 
     char t = 'takeoff';
     char l = 'land';
+    int i = 0;
  
     if(userInput == l){
-     int throttle = 0;
+     while (i != 0){
+        i--;
+        int throttle = i*100;
+        ledcWrite(CHANNEL_A, throttle);
+        ledcWrite(CHANNEL_B, throttle);
+        ledcWrite(CHANNEL_C, throttle);
+        ledcWrite(CHANNEL_D, throttle);
+     }
+     int throttle = 0*100;
      ledcWrite(CHANNEL_A, throttle);
      ledcWrite(CHANNEL_B, throttle);
      ledcWrite(CHANNEL_C, throttle);
@@ -52,11 +61,11 @@ void loop(){
 
     if(userInput == t)
     {
-     int throttle = 8*100;
+     int throttle = i*100;
      ledcWrite(CHANNEL_A, throttle);
-     //ledcWrite(CHANNEL_B, throttle);
-     //ledcWrite(CHANNEL_C, throttle);
-     //ledcWrite(CHANNEL_D, throttle);
+     ledcWrite(CHANNEL_B, throttle);
+     ledcWrite(CHANNEL_C, throttle);
+     ledcWrite(CHANNEL_D, throttle);
     }
   }
 }
